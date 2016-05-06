@@ -5,7 +5,7 @@ import hapi from 'hapi';
 import path from 'path';
 import inert from 'inert';
 import vision from 'vision';
-
+// 热加载
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
@@ -17,8 +17,7 @@ new WebpackDevServer(webpack(config), {
   if (err) { console.log(err); }
   console.log('Webpack listening at 8080');
 });
-
-
+// 启动服务器并配置静态资源路径
 const server = new hapi.Server({
   connections: {
     routes: {
@@ -28,7 +27,7 @@ const server = new hapi.Server({
     }
   }});
 server.connection({ port: 3000 });
-
+// 注册页面渲染
 server.register([inert, vision], () => {
   if (!process.env.DEBUG) {
     server.start(() => {
@@ -36,6 +35,7 @@ server.register([inert, vision], () => {
     });
   }
 });
+// 配置页面文件路径
 server.views({
   path: path.join(__dirname, './views'),
   engines: {
@@ -45,6 +45,7 @@ server.views({
         },
   isCached: false
 });
+// 路由单页应用
 server.route({
   method:'get',
   path:'/{p*}',
