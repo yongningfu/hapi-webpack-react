@@ -28,12 +28,8 @@ module.exports = {
     }]
   },
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),//允许错误不打断程序
     new webpack.HotModuleReplacementPlugin()
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'development'
-    //   }
-    // })
   ]
 };

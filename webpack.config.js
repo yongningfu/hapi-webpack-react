@@ -27,11 +27,9 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: 'style!css'
-      // loader: ExtractTextPlugin.extract('css!sass')
     }]
   },
   pugins: [
-    // new ExtractTextPlugin('style/bundle.css'),
     //压缩打包的文件
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -39,11 +37,6 @@ module.exports = {
       }
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV) || 'development'
-      }
-    })
+    new webpack.NoErrorsPlugin()
   ]
 };
