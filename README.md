@@ -26,3 +26,7 @@ bash/
   webpack.dev.config.js(开发环境下的配置文件)
   webpack.config.js(生产环境下的配置文件)
 ```
+
+#### npm i
+
+#### npm start
